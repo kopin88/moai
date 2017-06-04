@@ -31,27 +31,9 @@ window.axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest'
 };
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-
-// import Echo from "laravel-echo"
-
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: 'your-pusher-key'
-// });
-
-/**
- *  Bootstrap Material Design
- *
- */
-
-//  require('bootstrap-material-design');
-// // require('jasny-bootstrap');
-// require('jquery-ui');
+require('bootstrap-material-design');
+// require('jasny-bootstrap');
+require('jquery-ui');
 // require('perfect-scrollbar');
 // require('jquery-validation');
 // require('chartist');
@@ -68,24 +50,3 @@ window.axios.defaults.headers.common = {
 // require('moment');
 // require('datatables');
 // require('bootstrap-datepicker')
-// // require('font-awesome');
-
- require('bootstrap-material-design');
-// require('jasny-bootstrap');
-require('jquery-ui');
-require('perfect-scrollbar');
-require('jquery-validation');
-require('chartist');
-require('twitter-bootstrap-wizard');
-require('bootstrap-notify');
-require('eonasdan-bootstrap-datetimepicker');
-require('jvectormap');
-require('nouislider');
-// require('@google/maps');
-require('bootstrap-select');
-require('sweetalert2');
-require('fullcalendar');
-require('bootstrap-tagsinput');
-require('moment');
-require('datatables');
-require('bootstrap-datepicker')
