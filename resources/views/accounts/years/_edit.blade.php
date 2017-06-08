@@ -14,18 +14,6 @@
               <small class="text-danger">{{ $errors->first('name') }}</small>
           </div>
         </div>
-        <div class="col-md-6">
-            <div class="form-group{{ $errors->has('open_balance') ? ' has-error' : '' }} label-floating has-success">
-                {!! Form::number('open_balance', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'စာရင်းဖွင့်']) !!}
-                <small class="text-danger">{{ $errors->first('open_balance') }}</small>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group{{ $errors->has('balance') ? ' has-error' : '' }} label-floating has-success">
-                {!! Form::number('balance', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'လက်ကျန်']) !!}
-                <small class="text-danger">{{ $errors->first('balance') }}</small>
-            </div>
-        </div>
       </div>
       <hr>
       <div class="modal-footer">

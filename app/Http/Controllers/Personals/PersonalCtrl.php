@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Personals;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use Illuminate\Validation\Rule; // This validate rule for update
 
+// use App\Http\Controllers\Personals\Validator;
 use App\Models\Personals\Personal;
 use App\Models\Personals\Dept;
 use App\Models\Personals\Position;
@@ -24,10 +26,11 @@ class PersonalCtrl extends Controller
 
 
     private $rules =[
-        'name' => ['required', 'min:5'],
-        'serial' => ['required', 'min:5', 'unique:personals'],
+        'name' => 'required',
+        // 'serial' => ['required|unique:personals|max:5'],
+        'serial' => 'required|unique:personals',
         'nrc' => 'required|unique:personals',
-        'image' =>['mimes:png,jpg,jpeg,bmp']
+        'image' =>'mimes:png,jpg,jpeg,bmp'
       ];
 
     private $uploads_dir;
@@ -160,18 +163,24 @@ class PersonalCtrl extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit( Request $request, $id)
     {
-        $depts = $this->getDepts();
-        $personal = Personal::find($id);
+      $personal = Personal::find($id);
+
+
         return view('personals.edit', compact('depts', 'personal'));
     }
 
     public function update($id, Request $request)
     {
-      $this->validate($request, $this->rules);
 
       $personal = Personal::find($id);
+
+      $this->validate($request,[
+        'serial' => Rule::unique('personals')->ignore($personal->id, 'id'),
+        'nrc' => Rule::unique('personals')->ignore($personal->id, 'id')
+
+      ]);
 
       $data_update = $this->get_request($request);
 

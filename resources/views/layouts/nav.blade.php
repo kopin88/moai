@@ -7,16 +7,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Organization Name</a>
+      <a class="navbar-brand" href="{{ url('/') }}"><i class="material-icons" style="margin-bottom:5px">home</i> <strong>ပင်မပစ္စည်းသိုလှောင်ရုံအဆင့်(က)</strong></a>
     </div>
     <div class="collapse navbar-collapse" data-color="green">
       <ul class="nav navbar-nav navbar-right">
         <li class="{{ Request::is('/') ? "active" : "" }}">
-          <a href="/">
+          <a href="{{ url('/about') }}">
             <strong style="line-height:30px">
-              <i class="material-icons">star</i>
+              <i class="material-icons">assignment_turned_in</i>
               {{-- <i class="fa fa-star" aria-hidden="true"></i> --}}
-              ရည်ရွယ်ချက်
+              လုပ်ငန်းတာ၀န်
             </strong>
           </a>
         </li>
@@ -28,15 +28,7 @@
             </strong>
           </a>
         </li>
-        <li>
-          <a href="{{ url('/reports') }}">
-            <strong style="line-height:30px">
-              <i class="material-icons">report</i>
-              {{-- <i class="fa fa-exclamation-circle" aria-hidden="true"></i>  --}}
-              Report
-            </strong>
-          </a>
-        </li>
+
         <li class="dropdown">
           {{-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="material-icons">notifications</i>
@@ -44,7 +36,7 @@
             <p class="hidden-lg hidden-md">Notifications</p>
           </a> --}}
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
-            <img src="/uploads/user_images/{{ Auth::user()->avatar }}" alt="" style="width:32px; height:32px; position:absolute; left:10px; border-radius:50%"/>
+            <img src="/uploads/user_images/{{ Auth::user()->avatar }}" alt="" style="width:27px; height:27px; position:absolute; left:10px; border-radius:50%"/>
               {{ Auth::user()->name }} <span style="line-height:30px;" style="padding-left:10px;"><i class="material-icons">settings</i></span>
           </a>
           <ul class="dropdown-menu">
@@ -54,7 +46,14 @@
                 </a>
             </li>
             <li class="divider"></li>
-
+            <li>
+              <a href="{{ url('/reports') }}">
+                {{-- <strong style="line-height:30px"> --}}
+                  {{-- <i class="material-icons">report</i> --}}
+                  <i class="fa fa-exclamation-circle" aria-hidden="true" style="padding-right:10px;"></i>Report
+                {{-- </strong> --}}
+              </a>
+            </li>
             @foreach(Auth::user()->roles as $key => $navrole)
               @if ($navrole->name == "Administrator")
                 <li>

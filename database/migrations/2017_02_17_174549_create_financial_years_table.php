@@ -17,8 +17,6 @@ class CreateFinancialYearsTable extends Migration
             $table->increments('id');
             $table->string('active')->default(0);
             $table->string('name');
-            $table->bigInteger('open_balance')->nullable();
-            $table->bigInteger('balance')->nullable();
             $table->string('remark')->nullable();
             $table->timestamps();
         });

@@ -16,6 +16,7 @@ class CreatePersonalsTable extends Migration
         Schema::create('personals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('gender');
             $table->string('serial')->nullable();
             $table->date('on_date')->nullable();
             $table->string('active')->default(0);

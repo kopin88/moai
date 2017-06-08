@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FinancialYear extends Model
 {
-    protected $fillable = ['name', 'year_balance_id', 'in_total', 'out_total', 'balance', 'open_balance', 'remark'];
+    protected $fillable = ['name', 'active', 'remark'];
 
     protected $table = 'financial_years';
 

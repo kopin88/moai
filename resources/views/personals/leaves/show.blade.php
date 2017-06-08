@@ -47,9 +47,15 @@
               </div>
               <div class="card-content table-responsive">
                 @include('personals.leaves.detail')
-                <a class="text-success" href="{{ route('leaves.index', $personal->id) }}">
+                {{-- <a class="text-success" href="{{ route('leaves.index', $personal->id) }}">
                   <i class="fa fa-arrow-circle-o-left fa-lg" aria-hidden="true"></i>
                   နောက်သို့
+                </a> --}}
+              </div>
+              <div class="card-footer">
+                <a class="text-success" href="{{ route('payments.index', $personal->id) }}">
+                  <i class="fa fa-arrow-circle-o-left fa-lg" aria-hidden="true"></i>
+                    နောက်သို့
                 </a>
               </div>
             </div>

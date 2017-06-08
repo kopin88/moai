@@ -16,7 +16,7 @@
       </button>
       @include('accounts.payrolls._outedit')
     </th>
-    <th>
+    <th class="text-center">
       {!! Form::open(['method' => 'DELETE', 'route' => ['out_payrolls.destory', $out_payroll->id], 'class' => 'form-horizontal']) !!}
         <button type="submit" class="btn btn-danger btn-xs btn-round btn-circle" style="padding:3px;">
           <i class="material-icons">close</i>

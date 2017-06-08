@@ -40,41 +40,6 @@
               </div>
             </div>
           </div>
-
-          @if ($month_balance != null)
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group{{ $errors->has('month_balance_id') ? ' has-error' : '' }} label-floating has-success">
-                  {!! Form::select('month_balance_id', $month_balance, null, ['class'=>'form-control', 'placeholder' => '- စာရင်းဖွင့်လက်ကျန် - ', 'required' => 'required']) !!}
-                  <small class="text-danger">{{ $errors->first('month_balance_id') }}</small>
-                </div>
-              </div>
-              <div class="hidden form-group{{ $errors->has('balance') ? ' has-error' : '' }} label-floating has-success">
-                  {{-- {!! Form::label('open_balance', 'စာရင်းဖွင့်') !!} --}}
-                  {!! Form::number('open_balance', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'စာရင်းဖွင့်']) !!}
-                  <small class="text-danger">{{ $errors->first('balance') }}</small>
-              </div>
-            </div>
-          @else
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group{{ $errors->has('balance') ? ' has-error' : '' }} label-floating has-success">
-                    {{-- {!! Form::label('open_balance', 'စာရင်းဖွင့်') !!} --}}
-                    {!! Form::number('open_balance', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'စာရင်းဖွင့်']) !!}
-                    <small class="text-danger">{{ $errors->first('balance') }}</small>
-                </div>
-                <div class="hidden form-group{{ $errors->has('balance') ? ' has-error' : '' }} label-floating has-success">
-                    {{-- {!! Form::label('open_balance', 'စာရင်းဖွင့်') !!} --}}
-                    {!! Form::number('open_balance', null, ['class' => 'form-control', 'required' => 'required', 'placeholder'=>'စာရင်းဖွင့်']) !!}
-                    <small class="text-danger">{{ $errors->first('balance') }}</small>
-                </div>
-              </div>
-
-              <div class="col-md-7 col-md-offset-1">
-
-              </div>
-            </div>
-          @endif
         </div>
       </div>
       <div class="modal-footer">

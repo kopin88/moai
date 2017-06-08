@@ -7,14 +7,14 @@
   <div class="sidebar-wrapper">
     <div class="user">
         <div class="photo text-center" style="padding-top:20px">
-            {{-- <img src="/uploads/images/Ministry_of_Agriculture_and_Irrigation.svg.png" alt="" style="width:150px; height:150px; border-radius:50%;" /> --}}
             <a href="/">
+              {{-- <img src="/uploads/images/Ministry_of_Agriculture_and_Irrigation.svg.png" alt="" style="width:150px; height:150px; border-radius:50%;" /> --}}
               <img src="/uploads/images/logo.jpg" alt="" style="width:150px; height:150px; border-radius:50%;" />
             </a>
         </div>
     </div>
     <ul class="nav">
-      <li class="{{ Request::is('/') ? "active" : "" || Request::is('org') ? "active" : "" || Request::is('documentation') ? "active" : "" }}">
+      <li class="{{ Request::is('/') ? "active" : "" || Request::is('org') ? "active" : "" || Request::is('documentation') ? "active" : "" || Request::is('about') ? "active" : "" }}">
         <a href="/">
           <i class="material-icons">dashboard</i>
           <p>ပင်မစာမျက်နှာ</p>

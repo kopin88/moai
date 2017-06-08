@@ -1,5 +1,5 @@
 
-<li class="{{ Request::is('register') ? "active" : "" }} || {{ Request::is('users/list') ? "active" : "" }}">
+<li class="{{ Request::is('register') ? "active" : "" }} || {{ Request::is('users/list') ? "active" : "" }} || {{ Request::is('user/*') ? "active" : "" }}">
   <a data-toggle="collapse" href="#UserGroup">
       {{-- <i class="material-icons">account_circle</i> --}}
       <i class="fa fa-users" aria-hidden="true"></i>

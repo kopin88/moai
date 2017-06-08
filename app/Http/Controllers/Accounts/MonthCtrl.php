@@ -28,12 +28,10 @@ class MonthCtrl extends Controller
     {
         $financial_year = FinancialYear::find($financial_year_id);
         $months = Month::where('financial_year_id', $financial_year_id)->get();
-        $month_balance = $this->getMonths($financial_year_id);
 
 
           return view('accounts.months.index')
                       ->withMonths($months)
-                      ->withMonthBalance($month_balance)
                       ->withFinancialYear($financial_year);
     }
     //
@@ -58,8 +56,6 @@ class MonthCtrl extends Controller
         $month->financial_year_id = $request->financial_year_id;
         $month->name = $request->name;
         $month->title = $request->title;
-        $month->month_balance_id = $request->month_balance_id;
-        $month->open_balance = $request->open_balance;
         $month->save();
 
         return back()->with('message', 'Saved!');
@@ -84,8 +80,6 @@ class MonthCtrl extends Controller
               $month = Month::find($id);
               $month->name = $request->name;
               $month->title = $request->title;
-              $month->month_balance_id = $request->month_balance_id;
-              $month->open_balance = $request->open_balance;
               $month->save();
               return back();
 
@@ -98,16 +92,16 @@ class MonthCtrl extends Controller
               // return redirect("months")->with('message', 'Updated!');
         }
 
-
-            public function balance(Request $request, $id)
-            {
-
-                  $month = Month::find($id);
-                  $month->in_total = $request->in_total;
-                  $month->out_total = $request->out_total;
-                  $month->balance = $request->balance;
-                  $month->save();
-                  return back();
+            //
+            // public function balance(Request $request, $id)
+            // {
+            //
+            //       $month = Month::find($id);
+            //       $month->in_total = $request->in_total;
+            //       $month->out_total = $request->out_total;
+            //       $month->balance = $request->balance;
+            //       $month->save();
+            //       return back();
 
                   // $month = Month::find($id);
                   //
@@ -116,13 +110,13 @@ class MonthCtrl extends Controller
                   // $month->update($data_update);
                   //
                   // return redirect("months")->with('message', 'Updated!');
-            }
+          
 
 
 
 
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 }

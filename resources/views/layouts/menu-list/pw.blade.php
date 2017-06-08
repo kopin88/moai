@@ -4,7 +4,7 @@
     <p>ဝန်ထမ်း အသစ်ထည့်ရန်</p>
   </a>
 </li>
-<li class="{{ Request::is('financial_years') ? "active" : "" }} || {{ Request::is('financial_years/*') ? "active" : "" }}">
+<li class="{{ Request::is('financial_years') ? "active" : "" }} || {{ Request::is('financial_years/*') ? "active" : "" }} || {{ Request::is('months/*') ? "active" : "" }} || {{ Request::is('payrolls/*') ? "active" : "" }}">
     <a href="{{ url('/financial_years') }}">
         <i class="material-icons">monetization_on</i>
       <p>လစာပေးမှတ်တမ်း</p>

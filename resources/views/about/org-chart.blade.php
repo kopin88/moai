@@ -18,17 +18,6 @@
     </table>
   </div>
 </div>
-  <div class="row">
-    <div class="col-md-12">
-      {{-- <div class="text-center">
-        <span class="org-chart">သိုလှောင်ရုံမှူး</span><br>
-        <span class="org-chart">သိုလှောင်ရုံမှူး</span>
-        <span class="org-chart">သိုလှောင်ရုံမှူး</span>
-      </div> --}}
-
-      <!-- wrap the text node with <a href="#"> , <span>, blabla is also OK. Note:text node must immediately follow the <li> tag, with no intervening characters of any kind.  -->
-
-
-    </div>
-  </div>
+<div class="row">
+  <img src="/uploads/images/org-chart.png" style="padding: 0 20px"alt="">
 </div>

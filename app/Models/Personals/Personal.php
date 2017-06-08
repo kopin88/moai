@@ -10,7 +10,7 @@ use App\Models\Accounts\Account;
 class Personal extends Model
 {
     protected $fillable = [
-        'name', 'serial', 'on_date', 'active', 'image', 'nationality', 'religion', 'nrc', 'dob', 'pob', 'edu', 'unique', 'address', 'paddress'
+        'name', 'gender', 'serial', 'on_date', 'active', 'image', 'nationality', 'religion', 'nrc', 'dob', 'pob', 'edu', 'unique', 'address', 'paddress'
       ];
 
     protected $table = 'personals';

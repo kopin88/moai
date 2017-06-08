@@ -22,7 +22,7 @@
   <div class="col-md-12">
     <div class="row">
       {!! Form::model($personal, ['files'=>true,  'method'=>'PATCH','route'=>['personals.update', $personal->id]]) !!}
-        @include('personals._form')
+        @include('personals._form-edit')
       {!! Form::close() !!}
     </div>
   </div>

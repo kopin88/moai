@@ -2,6 +2,9 @@
 @if ($navrole->name == "User")
   @include('kopin.del-user')
 @else
-  @include('_home')
+  {{-- Home Page Style --}}
+
+  {{-- @include('about._home1') --}}
+  @include('about._home2')
 @endif
 @endforeach

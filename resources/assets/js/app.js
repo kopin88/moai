@@ -1,37 +1,7 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
-require('./jquery.sharrre');
-// require('./bootstrap-datetimepicker');
-// require('./jquery-jvectormap');
-// require('./nouislider.min');
-// require('./map-api');
-// require('./jquery.select-bootstrap');
-// require('./sweetalert2');
+// require('./jquery.sharrre');
 require('./jasny-bootstrap.min');
-// require('./fullcalendar.min');
-// require('./jquery.tagsinput');
 require('./material-dashboard');
 require('./demo');
 require('./kopin');
-
-
-
-
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-// Vue.component('example', require('./components/Example.vue'));
-//
-// const app = new Vue({
-//     el: '#app'
-// });

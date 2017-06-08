@@ -1,33 +1,15 @@
 <?php
 
-Route::get('/cleander', function(){
-  return view('cleander');
-})->name('cleander');
-Route::get('/welcome', function(){
-  return view('welcome');
-})->name('welcome');
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
+Auth::routes();
 Route::get('/login', function () {
     return view('auth.login');
 });
-
-Auth::routes();
-
 Route::get('/', 'HomeController@index');
 Route::get('/org', 'HomeController@org');
+Route::get('/about', 'HomeController@about');
 Route::get('/documentation', 'HomeController@documentation');
 
+// Report to Developer
 Route::group(['prefix' => 'reports'], function () {
   Route::get('/', [
     'uses'=>'ReportCtrl@index',
@@ -43,7 +25,7 @@ Route::group(['prefix' => 'reports'], function () {
   ]);
 });
 
-//User
+// User
 Route::group(['prefix' => 'users'], function () {
     Route::get('/list', [
       'uses'=>'Auth\UserCtrl@index',
@@ -80,6 +62,17 @@ Route::get('rolelist', 'Auth\UserCtrl@role_list');
 Route::get('profile', 'Auth\UserCtrl@profile');
 Route::post('profile', 'Auth\UserCtrl@update_avatar');
 
+// Payment
+Route::group(['prefix' => 'payments'], function () {
+  Route::get('/{id}/financialyear', [
+    'uses'=>'Personals\PaymentCtrl@index',
+    'as' => 'payments.index'
+  ]);
+  Route::get('/{id}/{fyear_id}', [
+    'uses'=>'Personals\PaymentCtrl@show',
+    'as' => 'payments.show'
+  ]);
+});
 
 //Dept
 Route::group(['prefix' => 'depts'], function () {
@@ -306,11 +299,6 @@ Route::group(['prefix' => 'leaves'], function () {
     'middleware'=>'roles',
     'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
   ]);
-  // Route::get('/{personal_id}/leaves', [
-  //   'uses'=>'Personals\LeaveCtrl@leaves',
-  //   'as'=>'leaves.leaves'
-  // ]);
-
   Route::get('/{personal_id}/leaves/{year_id}', [
     'uses'=>'Personals\LeaveCtrl@detail',
     'as'=>'leaves.detail',
@@ -511,13 +499,8 @@ Route::group(['prefix' => 'specialposts'], function () {
     'uses'=>'Accounts\FinancialYearCtrl@delete',
     'as'=>'financial_years.delete',
     'middleware'=>'roles',
-    'roles'=>['Administrator',  'Account Manager']
+    'roles'=>['Administrator',  'Personal Manager']
   ]);
-
-  // // MonthCtrl
-  // Route::resource('{financial_year_id}/months', 'Accounts\MonthCtrl', ['except' => [
-  //     'create', 'edit', 'destroy'
-  // ]]);
 
     // //Month
     Route::group(['prefix' => 'months'], function () {
@@ -525,52 +508,41 @@ Route::group(['prefix' => 'specialposts'], function () {
         'uses' => 'Accounts\MonthCtrl@index',
         'as' => 'months.index',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Read', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Read', 'Personal Write']
       ]);
       Route::post('/{financial_year_id}', [
         'uses' => 'Accounts\MonthCtrl@store',
         'as' => 'months.store',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
-      // Route::get('/{id}', [
-      //   'uses' => 'Accounts\MonthCtrl@show',
-      //   'as' => 'months.show'
-      // ]);
-      // Route::get('/months/{id}/edit', [
-      //   'uses' => 'Accounts\MonthCtrl@edit',
-      //   'as' => 'months.edit'
-      // ]);
       Route::patch('/{id}', [
         'uses' => 'Accounts\MonthCtrl@update',
         'as' => 'months.update',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::put('/{id}', [
         'uses' => 'Accounts\MonthCtrl@balance',
         'as' => 'months.balance',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::delete('/months/{id}', [
         'uses' => 'Accounts\MonthCtrl@destory',
         'as' => 'months.destory',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager']
+        'roles'=>['Administrator',  'Personal Manager']
       ]);
     });
+
   // Accounts
   Route::group(['prefix' => 'accounts'], function () {
-    // Route::post('/{month_id}', [
-    //   'uses' => 'Accounts\ExpenseCtrl@store',
-    //   'as' => 'expenses.store'
-    // ]);
     Route::get('/{month_id}', [
       'uses' => 'Accounts\AccountCtrl@show',
       'as' => 'accounts.show',
       'middleware'=>'roles',
-      'roles'=>['Administrator',  'Account Manager', 'Account Write', 'Account Read']
+      'roles'=>['Administrator',  'Personal Manager', 'Personal Write', 'Personal Read']
     ]);
     // Route::get('/{id}/edit', [
     //   'uses' => 'AccountCtrl@edit',
@@ -596,16 +568,16 @@ Route::group(['prefix' => 'specialposts'], function () {
       'uses' => 'Accounts\PayrollCtrl@index',
       'as' => 'payrolls.index',
       'middleware'=>'roles',
-      'roles'=>['Administrator',  'Account Manager', 'Account Write', 'Account Read']
+      'roles'=>['Administrator',  'Personal Manager', 'Personal Write', 'Personal Read']
     ]);
 
     Route::get('/{month_id}/create/{personal_id}', [
       'uses' => 'Accounts\PayrollCtrl@create',
       'as' => 'payrolls.create',
       'middleware'=>'roles',
-      'roles'=>['Administrator',  'Account Manager', 'Account Write']
+      'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
     ]);
-    
+
   });
 
 
@@ -615,25 +587,25 @@ Route::group(['prefix' => 'specialposts'], function () {
         'uses' => 'Accounts\InPayrollCtrl@store',
         'as' => 'in_payrolls.store',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::get('/{id}/edit', [
         'uses' => 'Accounts\InPayrollCtrl@edit',
         'as' => 'in_payrolls.edit',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::put('/{id}', [
         'uses' => 'Accounts\InPayrollCtrl@update',
         'as' => 'in_payrolls.update',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::delete('/{id}', [
         'uses' => 'Accounts\InPayrollCtrl@destory',
         'as' => 'in_payrolls.destory',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
     });
 
@@ -644,24 +616,24 @@ Route::group(['prefix' => 'specialposts'], function () {
         'uses' => 'Accounts\OutPayrollCtrl@store',
         'as' => 'out_payrolls.store',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::get('/{id}/edit', [
         'uses' => 'Accounts\OutPayrollCtrl@edit',
         'as' => 'out_payrolls.edit',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::put('/{id}', [
         'uses' => 'Accounts\OutPayrollCtrl@update',
         'as' => 'out_payrolls.update',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
       Route::delete('/{id}', [
         'uses' => 'Accounts\OutPayrollCtrl@destory',
         'as' => 'out_payrolls.destory',
         'middleware'=>'roles',
-        'roles'=>['Administrator',  'Account Manager', 'Account Write']
+        'roles'=>['Administrator',  'Personal Manager', 'Personal Write']
       ]);
     });

@@ -77,7 +77,7 @@
 							<div class="card-content">
 							  @include('accounts.payrolls._personal-table')
 							</div>
-						<a href="#" class="btn btn-primary btn-round">kopoin88</a>
+						<a href="#" class="btn btn-success btn-sm btn-round">ပင်မပစ္စည်းသိုလှောင်ရုံအဆင့်(က)</a>
 					</div>
 				</div>
 			</div>

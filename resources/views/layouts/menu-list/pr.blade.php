@@ -1,4 +1,8 @@
-<li class="{{ Request::is('personals') ? "active" : "" }} || {{ Request::is('personals/*') ? "active" : "" }}">
+@if (Request::is('personals/create'))
+  <li>
+@else
+  <li class="{{ Request::is('personals') ? "active" : "" }} || {{ Request::is('personals/*') ? "active" : "" }}">
+@endif
   <a data-toggle="collapse" href="#Personal">
     {{-- <i class="material-icons">account_box</i> --}}
     <i class="fa fa-sitemap" aria-hidden="true"></i>

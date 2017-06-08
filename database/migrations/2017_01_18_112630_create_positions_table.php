@@ -23,7 +23,7 @@ class CreatePositionsTable extends Migration
             $table->bigInteger('basic_salary');
             $table->bigInteger('annual_interest');
             $table->bigInteger('end_salary');
-            $table->string('remark');
+            $table->string('remark')->nullable();
             $table->timestamps();
         });
     }

@@ -47,7 +47,7 @@
         <div class="form-group has-success">
           <label for="nrc" class="control-label col-md-4"><h5 class=" text-primary"><strong>အမျိုးသား / နိုင်ငံသား<br> မှတ်ပုံတင်အမှတ်</strong></h5></label>
           <div class="col-md-7">
-            {!! Form::text("nrc", null, ['class'=>'form-control',  'placeholder'=>'၈/တတတ(နိုင်)၁၅၁၇၁၅', 'required'=>'required', 'style'=>'margin-top:10px']) !!}
+            {!! Form::text("nrc", null, ['class'=>'form-control', 'style'=>'margin-top:10px']) !!}
           </div>
         </div>
         <div class="form-group has-success">

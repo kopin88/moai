@@ -31,6 +31,11 @@ class HomeController extends Controller
       return view('org');
     }
 
+    public function about()
+    {
+      return view('about');
+    }
+
     public function documentation()
     {
       return view('documentation.index');

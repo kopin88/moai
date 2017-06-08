@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-	@include('about._org')
+	@include('about._about')
 @endsection
